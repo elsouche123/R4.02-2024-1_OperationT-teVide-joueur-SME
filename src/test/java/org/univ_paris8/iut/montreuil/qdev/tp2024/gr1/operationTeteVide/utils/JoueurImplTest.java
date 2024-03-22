@@ -2,60 +2,57 @@ package org.univ_paris8.iut.montreuil.qdev.tp2024.gr1.operationTeteVide.utils;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr1.operationTeteVide.entities.dto.JoueursDto;
+import org.univ_paris8.iut.montreuil.qdev.tp2024.gr1.operationTeteVide.services.impl.*;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr1.operationTeteVide.utiles.PseudoExistantException;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr1.operationTeteVide.utils.Exceptions.AgeException;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr1.operationTeteVide.utils.Exceptions.CentresInteretsVideException;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr1.operationTeteVide.utils.Exceptions.ErreurChoixLangueException;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr1.operationTeteVide.utils.Exceptions.PrenomException;
-
+import org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.AssertThrows.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class JoueurImplTest {
     ArrayList<String> cI = new ArrayList<>();
     JoueursDto j1 = new JoueursDto("a", "a", 2004, cI, 2);
+    JoueurPrenomImplTestMock prenomMock = new JoueurPrenomImplTestMock();
+    JoueurAgeImplTestMock age = new JoueurAgeImplTestMock();
+    JoueurPseudoImplTestMock pseudoMock = new JoueurPseudoImplTestMock();
+    JoueurChoixLangueImplTestMock langueMock = new JoueurChoixLangueImplTestMock();
+    JoueurCentresInteretsImplTestMock cIMock = new JoueurCentresInteretsImplTestMock();
 
     @Test
-    public JoueursDto creerJoueur(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) {
-        return new JoueursDto(prenom, pseudo, age, centresInterets, choixLangue);
-
+    void creerJoueur(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) {
+        //assert(JoueursDto)
     }
 
     @Test
-    public JoueursDto creerJoueurPseudoExistantException(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException {
-        JoueursDto joueursDto = new JoueursDto(prenom, pseudo, age, centresInterets, choixLangue);
-        if (joueursDto.getPseudo().equals(j1.getPseudo())) {
-            throw new PseudoExistantException();
-        }
-        return joueursDto;
+    void creerJoueurPseudoExistantException(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException {
+        assertThrows(PseudoExistantException.class, ()->pseudoMock.creerJoueur(prenom, pseudo, age, centresInterets, choixLangue));
     }
     @Test
-    public JoueursDto creerJoueurAgeException(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException, AgeException, PrenomException, CentresInteretsVideException, ErreurChoixLangueException {
-        JoueursDto joueursDto = new JoueursDto(prenom, pseudo, age, centresInterets, choixLangue);
-        if (joueursDto.getAge() <1933){
-            throw new AgeException();
-        }
-        return joueursDto;
-    }@Test
-    public JoueursDto creerJoueurPrenomException(String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException, AgeException, PrenomException, CentresInteretsVideException, ErreurChoixLangueException {
-        JoueursDto joueursDto = new JoueursDto("*/**", pseudo, age, centresInterets, choixLangue);
-        if (joueursDto.getPrenom().contains("/")){
-            throw new PrenomException();
-        }return joueursDto;
-    }@Test
-    public JoueursDto creerJoueurCentresInteretsException(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException, AgeException, PrenomException, CentresInteretsVideException, ErreurChoixLangueException {
-        JoueursDto joueursDto = new JoueursDto(prenom, pseudo, age, centresInterets, choixLangue);
-        if (joueursDto.getCentresInterets().isEmpty()){
-            throw new CentresInteretsVideException();
-        }return joueursDto;
+    void creerJoueurAgeException(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws  AgeException {
+        assertThrows(AgeException.class, ()->prenomMock.creerJoueur("*/**", pseudo, 1800, centresInterets, choixLangue));
+
     }
     @Test
-    public JoueursDto creerJoueurChoixLangueException(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException, AgeException, PrenomException, CentresInteretsVideException, ErreurChoixLangueException {
-        JoueursDto joueursDto = new JoueursDto(prenom, pseudo, age, centresInterets, choixLangue);
-        if (joueursDto.getLanguePreferee() > 5){
-            throw new ErreurChoixLangueException();
-        }return joueursDto;
+    void creerJoueurPrenomException(String pseudo, int age, List<String> centresInterets, int choixLangue) throws  PrenomException {
+        assertThrows(PrenomException.class, ()->prenomMock.creerJoueur("*/**", pseudo, age, centresInterets, choixLangue));
+    }
+    @Test
+    void creerJoueurCentresInteretsException(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws  CentresInteretsVideException{
+        assertThrows(CentresInteretsVideException.class, ()->cIMock.creerJoueur(prenom, pseudo, age, centresInterets, choixLangue));
+
+
+    }
+    @Test
+    void creerJoueurChoixLangueException(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws ErreurChoixLangueException {
+        assertThrows(ErreurChoixLangueException.class, ()->langueMock.creerJoueur(prenom, pseudo, age, centresInterets, choixLangue));
     }
 }
 
