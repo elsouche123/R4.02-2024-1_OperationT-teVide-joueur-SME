@@ -2,7 +2,7 @@ package org.univ_paris8.iut.montreuil.qdev.tp2024.gr1.operationTeteVide.entities
 
 import java.util.List;
 
-public abstract class JoueursDto {
+public class JoueursDto {
 
     private String prenom;
     private String pseudo;

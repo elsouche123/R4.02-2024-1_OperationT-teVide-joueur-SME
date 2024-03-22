@@ -11,7 +11,7 @@ import org.univ_paris8.iut.montreuil.qdev.tp2024.gr1.operationTeteVide.utils.Exc
 import java.util.List;
 
 public interface IJoueursService {
-    JoueursDto creerJoueur(String prenom, String pseudo, int age, List<String> centresInterets, String choixLangue) throws PseudoExistantException,
+    public JoueursDto creerJoueur(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException,
             AgeException, PrenomException, CentresInteretsVideException, ErreurChoixLangueException;
 }
 

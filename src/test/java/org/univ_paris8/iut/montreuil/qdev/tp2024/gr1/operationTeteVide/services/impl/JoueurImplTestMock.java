@@ -14,8 +14,23 @@ import java.util.List;
 public class JoueurImplTestMock implements IJoueursService {
 
     @Override
-    public JoueursDto creerJoueur(String prenom, String pseudo, int age, List<String> centresInterets, String choixLangue) throws PseudoExistantException, AgeException, PrenomException, CentresInteretsVideException, ErreurChoixLangueException {
-        return new JoueursDto() {
-        };
+    public JoueursDto creerJoueur(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException, AgeException, PrenomException, CentresInteretsVideException, ErreurChoixLangueException {
+        return new JoueursDto(prenom,pseudo,age,centresInterets,choixLangue);
+    }
+    public JoueursDto creerJoueurPseudoExistantException(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException, AgeException, PrenomException, CentresInteretsVideException, ErreurChoixLangueException {
+        throw new PseudoExistantException();
+    }
+    public JoueursDto creerJoueurAgeException(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException, AgeException, PrenomException, CentresInteretsVideException, ErreurChoixLangueException {
+        throw new AgeException();
+    }
+    public JoueursDto creerJoueurPrenomException(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException, AgeException, PrenomException, CentresInteretsVideException, ErreurChoixLangueException {
+        throw new PrenomException();
+    }
+    public JoueursDto creerJoueurCentresInteretsException(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException, AgeException, PrenomException, CentresInteretsVideException, ErreurChoixLangueException {
+        throw new CentresInteretsVideException();
+    }
+    public JoueursDto creerJoueurChoixLangueException(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException, AgeException, PrenomException, CentresInteretsVideException, ErreurChoixLangueException {
+        throw new ErreurChoixLangueException();
     }
 }
+
