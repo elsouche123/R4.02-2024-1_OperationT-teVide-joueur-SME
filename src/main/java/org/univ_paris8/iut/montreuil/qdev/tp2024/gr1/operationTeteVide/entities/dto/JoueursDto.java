@@ -8,9 +8,9 @@ public class JoueursDto {
     private String pseudo;
     private int age;
     private List<String> centresInterets;
-    private int languePreferee;
+    private String languePreferee;
 
-    public JoueursDto(String prenom, String pseudo, int age, List<String> centresInterets, int languePreferee) {
+    public JoueursDto(String prenom, String pseudo, int age, List<String> centresInterets, String languePreferee) {
         this.prenom = prenom;
         this.pseudo = pseudo;
         this.age = age;
@@ -45,7 +45,7 @@ public class JoueursDto {
         this.centresInterets = centresInterets;
     }
 
-    public void setLanguePreferee(int languePreferee) {
+    public void setLanguePreferee(String languePreferee) {
         this.languePreferee = languePreferee;
     }
 
@@ -65,7 +65,7 @@ public class JoueursDto {
         return centresInterets;
     }
 
-    public int getLanguePreferee() {
+    public String getLanguePreferee() {
         return languePreferee;
     }
 
