@@ -2,15 +2,15 @@ package org.univ_paris8.iut.montreuil.qdev.tp2024.gr1.operationTeteVide.entities
 
 import java.util.List;
 
-public  class JoueursDto {
+public class JoueursDto {
 
     private String prenom;
     private String pseudo;
     private int age;
     private List<String> centresInterets;
-    private String languePreferee;
+    private int languePreferee;
 
-    public JoueursDto(String prenom, String pseudo, int age, List<String> centresInterets, String languePreferee) {
+    public JoueursDto(String prenom, String pseudo, int age, List<String> centresInterets, int languePreferee) {
         this.prenom = prenom;
         this.pseudo = pseudo;
         this.age = age;
@@ -45,7 +45,7 @@ public  class JoueursDto {
         this.centresInterets = centresInterets;
     }
 
-    public void setLanguePreferee(String languePreferee) {
+    public void setLanguePreferee(int languePreferee) {
         this.languePreferee = languePreferee;
     }
 
@@ -65,7 +65,7 @@ public  class JoueursDto {
         return centresInterets;
     }
 
-    public String getLanguePreferee() {
+    public int getLanguePreferee() {
         return languePreferee;
     }
 

@@ -11,8 +11,8 @@ import java.util.List;
 public class JoueursService implements IJoueursService {
 
     @Override
-    public JoueursDto creerJoueur(String prenom, String pseudo, int age, List<String> centresInterets, String choixLangue) throws PseudoExistantException, ErreurSaisieException {
-        if (prenom == null || pseudo == null || age <= 0 || choixLangue == null) {
+    public JoueursDto creerJoueur(String prenom, String pseudo, int age, List<String> centresInterets, int choixLangue) throws PseudoExistantException, ErreurSaisieException {
+        if (prenom == null || pseudo == null || age <= 0) {
             throw new ErreurSaisieException("Les données fournies sont invalides.");
         }
 
